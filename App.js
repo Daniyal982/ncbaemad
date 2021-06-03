@@ -6,8 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import type {Node} from 'react';
+import React, {Component, Node} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -18,7 +17,9 @@ import {
   View,
   TextInput,
   Button,
-  Alert
+  Alert,
+  Image,
+  TouchableOpacity
 } from 'react-native';
 
 import {
@@ -29,77 +30,150 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  
-  
+class App extends Component{
+
+  constructor(props){
+    super(props);
+    this.state={
+        
+        flag:12,
+        arr:[],
+        
+        email:'',
+        password:'',
+
+    }
+
+}
+
+
+handleEmail = (text) => {
+  this.setState({ email: text })
+}
+
+handlePassword = (text) => {
+  this.setState({ password: text })
+}
+
+myOnPress = () =>{
+
+
+  // Alert.alert(this.state.password);
+
+
+}
+
+render(){
+
+  // Alert.alert('render');
+
   return (
 
+    <View style={{flex:1,flexDirection: "column"}}>
 
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+      <View style={{ flex: 0.50,flexDirection: "row",backgroundColor:'red' }}>
+
+      <View style={{ flex: 0.50,backgroundColor:'purple' }}>
+
+      </View>
+
+      <View style={{ flex: 0.50,backgroundColor:'black' }}>
+
+      <View style={{ flex: 0.50,flexDirection:'row',backgroundColor:'yellow' }}>
+
+          <View style={{ flex: 0.50,backgroundColor:'green' }}>
+
+
+            </View>
+
+            <View style={{ flex: 0.50,backgroundColor:'orange' }}>
+
+
+          </View>
+
+      </View>
+
+      <View style={{ flex: 0.50,flexDirection:'row',backgroundColor:'white' }}>
+
+            <View style={{ flex: 0.50,backgroundColor:'red' }}>
+
+                    
+
+            </View>
+            <View style={{ flex: 0.50,backgroundColor:'blue' }}>
+
+                    
+
+            </View>
+
+
+      </View>
+
+      </View>
+
+      </View>
+      
+      <View style={{ flex: 0.50, backgroundColor:'orange' }}>
+
+      
+
+
+      </View>
+
+      
+
     </View>
+
+
+
+
   );
-};
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  
+ }
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+ componentDidMount() {
+
+  this.setState({
+    flag:45
+  });
+
+  // console.log(this.state.flag);
+  // console.warn(this.state.flag);
+
+  var a = 123;
+  var b = 'Akhzar';
+
+  var objIrbaz = {
+    id:1,
+    name:'Irbaz',
+    rollno:99,
+    class:'BCS',
+    campus:'NCBAE',
+    marks:'88'
   };
 
-  return (
-   
-    <View>
-      <Text> Ecommerce App </Text>
-
-      <TextInput style={styles.saboor}
-        placeholder="Enter Username"
-      />
-
-      <TextInput
-        placeholder="Enter password"
-        secureTextEntry={true}
-      />
+  var arr = [objIrbaz,12,34,67];
 
 
-<Button
-  title="Sign In"
-  color="#841584"
-  accessibilityLabel="Learn more about this purple button"
-  onPress={() => Alert.alert('NCBAE')}
-/>
+}
+
+}
+
+module.exports=App;
 
 
-    </View>
-
-  );
-};
 
 const styles = StyleSheet.create({
-
   saboor:{
      backgroundColor:'red', 
       alignContent:'center',
       textAlign:'center',
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 10,
   },
   sectionContainer: {
     marginTop: 32,
@@ -118,5 +192,3 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
-
-export default App;
